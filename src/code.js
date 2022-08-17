@@ -1,17 +1,23 @@
-export function addAndMult(a, b) {
+//Линейные алгоритмы
+
+function additionAndMultiplication(a, b) {
     console.log(a + b, a * b);
 }
 
-export function sumOfLength(a, b) {
+module.exports.additionAndMultiplication = additionAndMultiplication;
+
+function sumOfLength(a, b) {
     console.log(a.length + b.length);
 }
 
-export function sumOfDigits() {
-    let num = prompt("Enter a number");
+module.exports.sumOfLength = sumOfLength;
 
+function sumOfDigits(num) {
     let thirdDigit = num % 10;
-    let secondDigit = (num - thirdDigit) % 100;
-    let thirdDigit = (num - secondDigit * 10 - thirdDigit) / 100;
+    let secondDigit = ((num - thirdDigit) / 10) % 10;
+    let firstDigit = (num - secondDigit * 10 - thirdDigit) / 100;
 
     console.log(firstDigit + secondDigit + thirdDigit);
 }
+
+module.exports.sumOfDigits = sumOfDigits;
