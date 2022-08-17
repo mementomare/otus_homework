@@ -64,3 +64,45 @@ describe("sumOfDigits", () => {
         })
     );
 });
+
+//Условия
+
+describe("max", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+    [
+        { a: 11, b: 5, result: 11 },
+        { a: 0, b: 1, result: 1 },
+        { a: -57, b: -198, result: -57 }
+    ].forEach(({ a, b, result }) =>
+        it(`prints ${result} for ${a} and ${b}`, () => {
+            jest.spyOn(console, "log");
+
+            myModule.max(a, b);
+
+            expect(console.log).toHaveBeenCalledWith(result);
+        })
+    );
+});
+
+describe("whatMonth", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+    [
+        { num: 5, result: "May" },
+        { num: 1, result: "January" },
+        { num: 8, result: "August" }
+    ].forEach(({ num, result }) =>
+        it(`prints ${result} for ${num}`, () => {
+            jest.spyOn(console, "log");
+
+            jest.spyOn(window, "prompt").mockImplementation(() => num);
+
+            myModule.whatMonth(num);
+
+            expect(console.log).toHaveBeenCalledWith(result);
+        })
+    );
+});
