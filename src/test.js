@@ -106,3 +106,34 @@ describe("whatMonth", () => {
         })
     );
 });
+
+//Циклы
+
+describe("sumOfIntegers", () => {
+    it("prints sum of all integers from 50 to 100", () => {
+        jest.spyOn(console, "log");
+
+        myModule.sumOfIntegers();
+
+        expect(console.log).toHaveBeenCalledWith(3825);
+    })
+});
+
+describe("multiplicationTable", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+    [
+        { num: 1, result: "7 x 1 = 7" },
+        { num: 3, result: "7 x 3 = 21" },
+        { num: 9, result: "7 x 9 = 63" }
+    ].forEach(({ num, result }) =>
+        it("prints ${result} for ${num}", () => {
+            jest.spyOn(console, "log");
+
+            myModule.multiplicationTable();
+
+            expect(console.log).toHaveBeenCalledWith(result);
+        })
+    );
+});
